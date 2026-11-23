@@ -6,7 +6,7 @@ component extends="coldbox.system.Interceptor" {
 
 	function preProcess() eventpattern="^geonames:" {
 		// logbox.getLogger(this).info("START: #event.getCurrentEvent()#@#getSetting('frontEndURL')#")
-		var expectedKey = getSetting("geonamesKey", "");
+		var expectedKey = getSetting(name:"geonamesKey", defaultValue:"");
         if (!len(expectedKey) || compare(event.getValue("secretkey",""), expectedKey) != 0)
             event.overrideevent("geonames:main.noauth");
 	}
